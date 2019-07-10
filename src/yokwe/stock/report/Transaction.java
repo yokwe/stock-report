@@ -201,16 +201,16 @@ public class Transaction implements Comparable<Transaction> {
 	
 	
 	public static List<Transaction> getFirstrade() {
-		final List<yokwe.stock.firstrade.Transaction> originalTransactionList;
+		final List<yokwe.stock.report.firstrade.Transaction> originalTransactionList;
 		
-		try (SpreadSheet docActivity = new SpreadSheet(yokwe.stock.firstrade.Transaction.URL_ACTIVITY, true)) {
+		try (SpreadSheet docActivity = new SpreadSheet(yokwe.stock.report.firstrade.Transaction.URL_ACTIVITY, true)) {
 			// Create transaction from activity using tradeDate
-			originalTransactionList = yokwe.stock.firstrade.Transaction.getTransactionList(docActivity, true);
+			originalTransactionList = yokwe.stock.report.firstrade.Transaction.getTransactionList(docActivity, true);
 		}
 		
 		List<Transaction> transactionList = new ArrayList<>();
 		
-		for(yokwe.stock.firstrade.Transaction originalTransaction: originalTransactionList) {
+		for(yokwe.stock.report.firstrade.Transaction originalTransaction: originalTransactionList) {
 			final Transaction transaction;
 			switch(originalTransaction.type) {
 			case WIRE_IN:
@@ -255,16 +255,16 @@ public class Transaction implements Comparable<Transaction> {
 	}
 	
 	public static List<Transaction> getMonex() {
-		final List<yokwe.stock.monex.Transaction> origintalTransactionList;
+		final List<yokwe.stock.report.monex.Transaction> origintalTransactionList;
 		
-		try (SpreadSheet docActivity = new SpreadSheet(yokwe.stock.monex.Transaction.URL_ACTIVITY, true)) {
+		try (SpreadSheet docActivity = new SpreadSheet(yokwe.stock.report.monex.Transaction.URL_ACTIVITY, true)) {
 			// Create transaction from activity using tradeDate
-			origintalTransactionList = yokwe.stock.monex.Transaction.getTransactionList(docActivity);
+			origintalTransactionList = yokwe.stock.report.monex.Transaction.getTransactionList(docActivity);
 		}
 
 		List<Transaction> transactionList = new ArrayList<>();
 		
-		for(yokwe.stock.monex.Transaction originalTransaction: origintalTransactionList) {
+		for(yokwe.stock.report.monex.Transaction originalTransaction: origintalTransactionList) {
 			final Transaction transaction;
 			switch(originalTransaction.type) {
 			case USD_IN:

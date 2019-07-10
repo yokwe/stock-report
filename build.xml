@@ -45,7 +45,7 @@
 	
 	<!-- app -->
         <target name="run-update-forex">
-                <java classname="yokwe.stock.app.UpdateForex" fork="true">
+                <java classname="yokwe.stock.report.data.UpdateForex" fork="true">
                         <classpath location="${jar.stock-report}" />
                         <classpath refid="ext.jar" />
                         <sysproperty key="java.library.path" value="/usr/lib/libreoffice/program"/>
@@ -64,7 +64,7 @@
 
 	<!-- monex -->
         <target name="run-monex-update-fx-tax">
-                <java classname="yokwe.stock.monex.UpdateFXTax" fork="true">
+                <java classname="yokwe.stock.report.monex.UpdateFXTax" fork="true">
                         <classpath location="${jar.stock-report}" />
                         <classpath refid="ext.jar" />
                         <sysproperty key="java.library.path" value="/usr/lib/libreoffice/program"/>
@@ -73,7 +73,7 @@
         </target>
         
         <target name="run-monex-update-stock-history">
-                <java classname="yokwe.stock.monex.UpdateStockHistory" fork="true">
+                <java classname="yokwe.stock.report.monex.UpdateStockHistory" fork="true">
                         <classpath location="${jar.stock-report}" />
                         <classpath refid="ext.jar" />
                         <sysproperty key="java.library.path" value="/usr/lib/libreoffice/program"/>
@@ -82,7 +82,7 @@
         </target>
 
         <target name="run-monex-update-stock-us">
-                <java classname="yokwe.stock.monex.UpdateStockUS" fork="true">
+                <java classname="yokwe.stock.report.monex.UpdateStockUS" fork="true">
                         <classpath location="${jar.stock-report}" />
                         <classpath refid="ext.jar" />
                         <sysproperty key="java.library.path" value="/usr/lib/libreoffice/program"/>
@@ -91,7 +91,7 @@
         </target>
         
 	<target name="run-monex-update-yahoo-portfolio">
-                <java classname="yokwe.stock.monex.UpdateYahooPortfolio" fork="true">
+                <java classname="yokwe.stock.report.monex.UpdateYahooPortfolio" fork="true">
                         <classpath location="${jar.stock-report}" />
                         <classpath refid="ext.jar" />
                         <sysproperty key="java.library.path" value="/usr/lib/libreoffice/program"/>
@@ -101,7 +101,7 @@
 	
 	<!-- firstrade -->
         <target name="run-firstrade-update-stock-history">
-                <java classname="yokwe.stock.firstrade.UpdateStockHistory" fork="true">
+                <java classname="yokwe.stock.report.firstrade.UpdateStockHistory" fork="true">
                         <classpath location="${jar.stock-report}" />
                         <classpath refid="ext.jar" />
                         <sysproperty key="java.library.path" value="/usr/lib/libreoffice/program"/>
@@ -110,7 +110,7 @@
         </target>
         
         <target name="run-firstrade-update-yahoo-portfolio">
-                <java classname="yokwe.stock.firstrade.UpdateYahooPortfolio" fork="true">
+                <java classname="yokwe.stock.report.firstrade.UpdateYahooPortfolio" fork="true">
                         <classpath location="${jar.stock-report}" />
                         <classpath refid="ext.jar" />
                         <sysproperty key="java.library.path" value="/usr/lib/libreoffice/program"/>
@@ -119,7 +119,7 @@
         </target>
 
         <target name="run-firstrade-tax-report">
-                <java classname="yokwe.stock.firstrade.tax.Report" fork="true">
+                <java classname="yokwe.stock.report.firstrade.tax.Report" fork="true">
                         <classpath location="${jar.stock-report}" />
                         <classpath refid="ext.jar" />
                         <sysproperty key="java.library.path" value="/usr/lib/libreoffice/program"/>
@@ -128,7 +128,7 @@
         </target>
 
         <target name="run-firstrade-statement-report">
-                <java classname="yokwe.stock.firstrade.statement.Report" fork="true">
+                <java classname="yokwe.stock.report.firstrade.statement.Report" fork="true">
                         <classpath location="${jar.stock-report}" />
                         <classpath refid="ext.jar" />
                         <sysproperty key="java.library.path" value="/usr/lib/libreoffice/program"/>

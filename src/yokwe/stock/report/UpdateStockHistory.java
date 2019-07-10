@@ -11,7 +11,7 @@ import java.util.TreeMap;
 import org.slf4j.LoggerFactory;
 
 import yokwe.stock.UnexpectedException;
-import yokwe.stock.data.StockHistory;
+import yokwe.stock.report.data.StockHistory;
 import yokwe.stock.util.DoubleUtil;
 
 public class UpdateStockHistory {
