@@ -37,6 +37,9 @@ public class Market {
 	static {
 		List<MarketHoliday> marketHolidayList = CSVUtil.loadWithHeader(PATH_MARKET_HOLIDAY_CSV, MarketHoliday.class);
 		for(MarketHoliday marketHoliday: marketHolidayList) {
+			// If line start with "#", treat as comment.
+			if (marketHoliday.date.startsWith("#")) continue;
+			
 			LocalDate date   = LocalDate.parse(marketHoliday.date);
 			boolean   closed = marketHoliday.status.toLowerCase().startsWith("close"); // To avoid confusion comes from misspelled word
 			holidayMap.put(date, new Holiday(date, closed));
