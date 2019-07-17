@@ -23,6 +23,11 @@ firstrade-yahoo-portfolio:
 	ant run-firstrade-update-yahoo-portfolio
 	cp tmp/firstrade/yahoo-portfolio-firstrade.csv ~/Dropbox/Trade
 
+# ant run-firstrade-tax-report require updated forex.csv
+update-forex:
+	ant run-update-forex
+	cp tmp/data/forex.csv ~/Dropbox/Trade/
+
 #
 # monex
 #
