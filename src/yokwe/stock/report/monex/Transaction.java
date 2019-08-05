@@ -379,11 +379,6 @@ public class Transaction implements Comparable<Transaction> {
 						logger.error("Unexpected  {}", nextActivity);
 						throw new UnexpectedException("Unexpected");
 					}
-					if (activity.symbol.compareTo(nextActivity.symbol) != 0) {
-						logger.error("Unexpected  {}", activity);
-						logger.error("Unexpected  {}", nextActivity);
-						throw new UnexpectedException("Unexpected");
-					}
 					if (activity.quantity < 0) {
 						logger.error("Unexpected  {}", activity);
 						throw new UnexpectedException("Unexpected");
