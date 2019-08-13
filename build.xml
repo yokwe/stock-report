@@ -136,9 +136,19 @@
                 </java>
         </target>
 
-	<!-- sbi -->
+        <!-- sbi -->
         <target name="run-sbi-update-stock-us">
                 <java classname="yokwe.stock.report.sbi.UpdateStockUS" fork="true">
+                        <classpath location="${jar.stock-report}" />
+                        <classpath refid="ext.jar" />
+                        <sysproperty key="java.library.path" value="/usr/lib/libreoffice/program"/>
+                        <sysproperty key="logback.configurationFile" value="${dir.src}/logback.xml"/>
+                </java>
+        </target>
+
+        <!-- rakuten -->
+        <target name="run-rakuten-update-stock-us">
+                <java classname="yokwe.stock.report.rakuten.UpdateStockUS" fork="true">
                         <classpath location="${jar.stock-report}" />
                         <classpath refid="ext.jar" />
                         <sysproperty key="java.library.path" value="/usr/lib/libreoffice/program"/>
