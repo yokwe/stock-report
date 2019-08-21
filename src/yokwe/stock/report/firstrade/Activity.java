@@ -1,7 +1,7 @@
 package yokwe.stock.report.firstrade;
 
-import yokwe.stock.libreoffice.Sheet;
-import yokwe.stock.libreoffice.SpreadSheet;
+import yokwe.util.libreoffice.Sheet;
+import yokwe.util.libreoffice.SpreadSheet;
 
 @Sheet.SheetName("Transaction")
 @Sheet.HeaderRow(0)

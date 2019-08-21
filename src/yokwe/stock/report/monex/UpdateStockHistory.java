@@ -5,11 +5,11 @@ import java.util.List;
 
 import org.slf4j.LoggerFactory;
 
-import yokwe.stock.UnexpectedException;
-import yokwe.stock.libreoffice.SpreadSheet;
+import yokwe.UnexpectedException;
+import yokwe.util.CSVUtil;
+import yokwe.util.libreoffice.SpreadSheet;
 import yokwe.stock.report.data.StockHistory;
 import yokwe.stock.report.data.StockHistoryUtil;
-import yokwe.stock.util.CSVUtil;
 
 public class UpdateStockHistory {
 	private static final org.slf4j.Logger logger = LoggerFactory.getLogger(UpdateStockHistory.class);
@@ -66,7 +66,7 @@ public class UpdateStockHistory {
 		List<StockHistory>stockHistoryList = getStockHistoryList();
 		logger.info("stockHistoryList = {}", stockHistoryList.size());
 
-		CSVUtil.saveWithHeader(stockHistoryList, StockHistoryUtil.PATH_STOCK_HISTORY_MONEX);
+		CSVUtil.write(StockHistory.class).file(StockHistoryUtil.PATH_STOCK_HISTORY_MONEX, stockHistoryList);
 		
 		logger.info("STOP");
 		System.exit(0);

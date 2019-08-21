@@ -9,8 +9,8 @@ import org.slf4j.LoggerFactory;
 import yokwe.stock.report.data.StockHistory;
 import yokwe.stock.report.data.StockHistoryUtil;
 import yokwe.stock.report.data.YahooPortfolio;
-import yokwe.stock.util.CSVUtil;
-import yokwe.stock.util.DoubleUtil;
+import yokwe.util.DoubleUtil;
+import yokwe.util.CSVUtil;
 
 public class UpdateYahooPortfolio {
 	private static final org.slf4j.Logger logger = LoggerFactory.getLogger(UpdateYahooPortfolio.class);
@@ -39,7 +39,7 @@ public class UpdateYahooPortfolio {
 			yahooPortfolioList.add(new YahooPortfolio(symbol, purchasePrice, quantity));
 		}
 		
-		CSVUtil.saveWithHeader(yahooPortfolioList, PATH_YAHOO_PORTFOLIO);
+		CSVUtil.write(YahooPortfolio.class).file(PATH_YAHOO_PORTFOLIO, yahooPortfolioList);
 		logger.info("yahooPortfolioList {}", yahooPortfolioList.size());
 		
 		logger.info("STOP");

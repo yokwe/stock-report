@@ -11,8 +11,8 @@ import java.util.regex.Pattern;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import yokwe.stock.util.CSVUtil;
-import yokwe.stock.util.HttpUtil;
+import yokwe.util.HttpUtil;
+import yokwe.util.CSVUtil;
 
 public class UpdateFXTax {
 	private static final Logger logger = LoggerFactory.getLogger(UpdateFXTax.class);
@@ -39,13 +39,13 @@ public class UpdateFXTax {
 	private static final Pattern PATTERN = Pattern.compile(PATTERN_STRING, (Pattern.MULTILINE | Pattern.DOTALL));
 	
 	public static List<FXTax> load() {
-		return CSVUtil.loadWithHeader(PATH_MONEX_FX_TAX, FXTax.class);
+		return CSVUtil.read(FXTax.class).file(PATH_MONEX_FX_TAX);
 	}
 	
 	private static void updateThisYear() {
 		logger.info("updateThisYear {}", THIS_YEAR);
 		String path     = getPath(THIS_YEAR);
-		String contents = HttpUtil.downloadAsString(SOURCE_URL, SOURCE_ENCODING);
+		String contents = HttpUtil.getInstance().withCharset(SOURCE_ENCODING).download(SOURCE_URL).result;
 
 		Matcher matcher = PATTERN.matcher(contents);
 		
@@ -66,7 +66,7 @@ public class UpdateFXTax {
 //		logger.info("URL  = {}", SOURCE_URL);
 //		logger.info("PATH = {}", path);
 		
-		CSVUtil.saveWithHeader(monexStockFXList, path);
+		CSVUtil.write(FXTax.class).file(path, monexStockFXList);
 	}
 
 	public static void main(String[] args) {
@@ -80,7 +80,7 @@ public class UpdateFXTax {
 			File file = new File(path);
 			if (!file.canRead()) break;
 			
-			List<FXTax> list = CSVUtil.loadWithHeader(path, FXTax.class);
+			List<FXTax> list = CSVUtil.read(FXTax.class).file(path);
 			logger.info("read {} {}", path, list.size());
 			monexStockFXList.addAll(list);
 		}
@@ -88,7 +88,7 @@ public class UpdateFXTax {
 		
 		logger.info("DATA = {}", monexStockFXList.size());
 		logger.info("PATH = {}", PATH_MONEX_FX_TAX);
-		CSVUtil.saveWithHeader(monexStockFXList, PATH_MONEX_FX_TAX);
+		CSVUtil.write(FXTax.class).file(PATH_MONEX_FX_TAX, monexStockFXList);
 		
 		logger.info("STOP");		
 	}

@@ -1,7 +1,7 @@
 package yokwe.stock.report.firstrade.tax;
 
-import yokwe.stock.libreoffice.Sheet;
-import yokwe.stock.libreoffice.SpreadSheet;
+import yokwe.util.libreoffice.Sheet;
+import yokwe.util.libreoffice.SpreadSheet;
 
 @Sheet.SheetName("配当明細")
 @Sheet.HeaderRow(0)

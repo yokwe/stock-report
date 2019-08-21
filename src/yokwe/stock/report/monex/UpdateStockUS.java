@@ -15,9 +15,9 @@ import javax.json.JsonReader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import yokwe.stock.UnexpectedException;
-import yokwe.stock.util.CSVUtil;
-import yokwe.stock.util.HttpUtil;
+import yokwe.UnexpectedException;
+import yokwe.util.HttpUtil;
+import yokwe.util.CSVUtil;
 
 public class UpdateStockUS {
 	private static final Logger logger = LoggerFactory.getLogger(UpdateStockUS.class);
@@ -32,21 +32,21 @@ public class UpdateStockUS {
 	
 	
 	public static void save(List<StockUS> usSecurityList) {
-		CSVUtil.saveWithHeader(usSecurityList, PATH_MONEX_US);
+		CSVUtil.write(StockUS.class).file(PATH_MONEX_US, usSecurityList);
 	}
 	public static List<StockUS> load() {
-		return CSVUtil.loadWithHeader(PATH_MONEX_US, StockUS.class);
+		return CSVUtil.read(StockUS.class).file(PATH_MONEX_US);
 	}
 	
 	public static void main(String[] args) {
 		logger.info("START");
 		
-		String contents = HttpUtil.downloadAsString(SOURCE_URL, SOURCE_ENCODING);
+		String contents = HttpUtil.getInstance().withCharset(SOURCE_ENCODING).download(SOURCE_URL).result;
 		String content2 = contents.replaceAll(",\\s+]", "]"); // Remove comma of last array element
 		Matcher matcher = PATTERN.matcher(content2);
 		if (!matcher.find()) {
 			logger.error("Unexpected");
-			throw new UnexpectedException();
+			throw new UnexpectedException("Unexpected");
 		}
 		
 		String match = matcher.group(1);

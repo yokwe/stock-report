@@ -9,14 +9,14 @@ import java.util.stream.Collectors;
 
 import org.slf4j.LoggerFactory;
 
-import yokwe.stock.UnexpectedException;
-import yokwe.stock.libreoffice.Sheet;
-import yokwe.stock.libreoffice.SpreadSheet;
+import yokwe.UnexpectedException;
+import yokwe.util.libreoffice.Sheet;
+import yokwe.util.libreoffice.SpreadSheet;
 import yokwe.stock.report.firstrade.Transaction;
 import yokwe.stock.report.firstrade.tax.Account;
 import yokwe.stock.report.firstrade.tax.BuySell;
 import yokwe.stock.report.firstrade.tax.Transfer;
-import yokwe.stock.util.DoubleUtil;
+import yokwe.util.DoubleUtil;
 
 public class Report {
 	private static final org.slf4j.Logger logger = LoggerFactory.getLogger(Report.class);

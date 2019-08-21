@@ -2,8 +2,8 @@ package yokwe.stock.report.data;
 
 import org.slf4j.LoggerFactory;
 
-import yokwe.stock.UnexpectedException;
-import yokwe.stock.util.DateMap;
+import yokwe.UnexpectedException;
+import yokwe.util.DateMap;
 
 public class ForexUtil {
 	private static final org.slf4j.Logger logger = LoggerFactory.getLogger(ForexUtil.class);

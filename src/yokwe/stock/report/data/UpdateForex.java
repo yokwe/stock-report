@@ -11,9 +11,9 @@ import java.util.List;
 
 import org.slf4j.LoggerFactory;
 
-import yokwe.stock.UnexpectedException;
-import yokwe.stock.util.CSVUtil;
-import yokwe.stock.util.HttpUtil;
+import yokwe.UnexpectedException;
+import yokwe.util.HttpUtil;
+import yokwe.util.CSVUtil;
 
 public class UpdateForex {
 	private static final org.slf4j.Logger logger = LoggerFactory.getLogger(UpdateForex.class);
@@ -24,7 +24,7 @@ public class UpdateForex {
 	public static final String PATH_FOREX       = "tmp/data/forex.csv";
 	
 	public static List<Forex> load() {
-		return CSVUtil.loadWithHeader(PATH_FOREX, Forex.class);
+		return CSVUtil.read(Forex.class).file(PATH_FOREX);
 	}
 	
 	public static void main (String[] args) {
@@ -51,7 +51,7 @@ public class UpdateForex {
 			}
 		}
 		
-		String contents = HttpUtil.downloadAsString(URL_MIZUHO, ENCODING_MIZUHO);
+		String contents = HttpUtil.getInstance().withCharset(ENCODING_MIZUHO).download(URL_MIZUHO).result;
 
 		int count = 0;
 
@@ -81,7 +81,7 @@ public class UpdateForex {
 					}
 					if (index == -1) {
 						logger.error("Unknown currency = {}", currency);
-						throw new UnexpectedException();
+						throw new UnexpectedException("Unknown currency");
 					}
 					currencyIndex[i] = index;
 					logger.info("{}", String.format("%s  %2d", currency, index));
@@ -113,9 +113,9 @@ public class UpdateForex {
 				count++;
 			}
 		} catch (IOException e) {
-			logger.error(e.getClass().getName());
-			logger.error(e.getMessage());
-			throw new UnexpectedException();
+			String exceptionName = e.getClass().getSimpleName();
+			logger.error("{} {}", exceptionName, e);
+			throw new UnexpectedException(exceptionName, e);
 		}
 		
 		// Sanity check

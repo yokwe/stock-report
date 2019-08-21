@@ -8,14 +8,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import org.apache.commons.csv.CSVFormat;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import yokwe.stock.UnexpectedException;
-import yokwe.stock.util.CSVUtil;
-import yokwe.stock.util.CSVUtil.ColumnName;
-import yokwe.stock.util.HttpUtil;
+import yokwe.UnexpectedException;
+import yokwe.util.HttpUtil;
+import yokwe.util.CSVUtil;
+import yokwe.util.CSVUtil.ColumnName;
 
 
 public class UpdateStockUS {
@@ -102,31 +101,25 @@ public class UpdateStockUS {
 	}
 
 	public static void save(List<StockUS> usSecurityList) {
-		CSVUtil.saveWithHeader(usSecurityList, PATH_RAKUTEN_US);
+		CSVUtil.write(StockUS.class).file(PATH_RAKUTEN_US, usSecurityList);
+
 	}
 	public static List<StockUS> load() {
-		return CSVUtil.loadWithHeader(PATH_RAKUTEN_US, StockUS.class);
+		return CSVUtil.read(StockUS.class).file(PATH_RAKUTEN_US);
 	}
 	
 	private static <E> List<E> loadData(String url, Class<E> clazz) {
-		String content = HttpUtil.downloadAsString(url);
+		String content = HttpUtil.getInstance().download(url).result;
 		Reader reader = new StringReader(content);
 		
-		CSVFormat csvFormat = CSVFormat.DEFAULT.withRecordSeparator("\n");
-		List<E> ret = CSVUtil.load(reader, clazz, csvFormat);
-		
-		logger.info("URL {}", url);
-		logger.info("  {}", ret.size());
+		List<E> ret = CSVUtil.read(clazz).withHeader(false).file(reader);
 		return ret;
 	}
 	private static <E> List<E> loadDataWithHeader(String url, Class<E> clazz) {
-		String content = HttpUtil.downloadAsString(url);
+		String content = HttpUtil.getInstance().download(url).result;
 		Reader reader = new StringReader(content);
 		
-		List<E> ret = CSVUtil.loadWithHeader(reader, clazz);
-		
-		logger.info("URL {}", url);
-		logger.info("  {}", ret.size());
+		List<E> ret = CSVUtil.read(clazz).file(reader);
 		return ret;
 	}
 

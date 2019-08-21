@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 import org.slf4j.LoggerFactory;
 
-import yokwe.stock.util.CSVUtil;
+import yokwe.util.CSVUtil;
 
 public class Portfolio {
 	private static final org.slf4j.Logger logger = LoggerFactory.getLogger(Portfolio.class);
@@ -51,7 +51,7 @@ public class Portfolio {
 		
 		{
 			String path = String.format("%s/%s", pathBase, fileName);
-			List<StockHistory> stockHistoryList = CSVUtil.loadWithHeader(path, StockHistory.class);
+			List<StockHistory> stockHistoryList = CSVUtil.read(StockHistory.class).file(path);
 
 			Map<String, List<StockHistory>> stockHistoryMap = new TreeMap<>();
 			

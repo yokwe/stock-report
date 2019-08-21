@@ -1,7 +1,7 @@
 package yokwe.stock.report.monex;
 
-import yokwe.stock.libreoffice.Sheet;
-import yokwe.stock.libreoffice.SpreadSheet;
+import yokwe.util.libreoffice.Sheet;
+import yokwe.util.libreoffice.SpreadSheet;
 
 public class Activity {
 	@Sheet.SheetName("口座")

@@ -10,10 +10,10 @@ import java.util.stream.Collectors;
 
 import org.slf4j.LoggerFactory;
 
-import yokwe.stock.UnexpectedException;
-import yokwe.stock.libreoffice.Sheet;
-import yokwe.stock.libreoffice.SpreadSheet;
-import yokwe.stock.util.DoubleUtil;
+import yokwe.UnexpectedException;
+import yokwe.util.libreoffice.Sheet;
+import yokwe.util.libreoffice.SpreadSheet;
+import yokwe.util.DoubleUtil;
 
 
 @Sheet.SheetName("履歴")

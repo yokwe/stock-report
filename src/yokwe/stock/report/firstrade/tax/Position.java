@@ -7,9 +7,9 @@ import java.util.TreeMap;
 
 import org.slf4j.LoggerFactory;
 
-import yokwe.stock.UnexpectedException;
-import yokwe.stock.util.DateMap;
-import yokwe.stock.util.DoubleUtil;
+import yokwe.UnexpectedException;
+import yokwe.util.DateMap;
+import yokwe.util.DoubleUtil;
 
 public class Position {
 	private static final org.slf4j.Logger logger = LoggerFactory.getLogger(Position.class);

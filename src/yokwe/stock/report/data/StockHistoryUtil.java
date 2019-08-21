@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import yokwe.stock.util.CSVUtil;
+import yokwe.util.CSVUtil;
 
 public class StockHistoryUtil {
 	public static final String PATH_STOCK_HISTORY_MONEX     = "tmp/monex/stock-history-monex.csv";
@@ -14,7 +14,7 @@ public class StockHistoryUtil {
 	//                group
 	public static Map<String, List<StockHistory>> getStockHistoryMap(String pathBase, String fileName) {
 		String path = String.format("%s/%s", pathBase, fileName);
-		List<StockHistory> stockHistoryList = CSVUtil.loadWithHeader(path, StockHistory.class);
+		List<StockHistory> stockHistoryList = CSVUtil.read(StockHistory.class).file(path);
 		
 		Map<String, List<StockHistory>> ret = new TreeMap<>();
 		

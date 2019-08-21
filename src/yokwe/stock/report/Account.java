@@ -1,7 +1,7 @@
 package yokwe.stock.report;
 
-import yokwe.stock.libreoffice.Sheet;
-import yokwe.stock.libreoffice.SpreadSheet;
+import yokwe.util.libreoffice.Sheet;
+import yokwe.util.libreoffice.SpreadSheet;
 
 @Sheet.SheetName("口座")
 @Sheet.HeaderRow(0)

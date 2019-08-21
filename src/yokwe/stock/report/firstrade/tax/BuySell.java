@@ -7,9 +7,9 @@ import java.util.TreeMap;
 
 import org.slf4j.LoggerFactory;
 
-import yokwe.stock.UnexpectedException;
+import yokwe.UnexpectedException;
 import yokwe.stock.report.firstrade.Transaction;
-import yokwe.stock.util.DoubleUtil;
+import yokwe.util.DoubleUtil;
 
 public class BuySell {
 	private static final org.slf4j.Logger logger = LoggerFactory.getLogger(BuySell.class);

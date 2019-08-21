@@ -9,9 +9,9 @@ import java.util.regex.Pattern;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import yokwe.stock.UnexpectedException;
-import yokwe.stock.util.CSVUtil;
-import yokwe.stock.util.HttpUtil;
+import yokwe.UnexpectedException;
+import yokwe.util.HttpUtil;
+import yokwe.util.CSVUtil;
 
 public class UpdateStockUS {
 	private static final Logger logger = LoggerFactory.getLogger(UpdateStockUS.class);
@@ -22,10 +22,10 @@ public class UpdateStockUS {
 	public static final String PATH_SBI_US = "tmp/sbi/sbi-stock-us.csv";
 
 	public static void save(List<StockUS> usSecurityList) {
-		CSVUtil.saveWithHeader(usSecurityList, PATH_SBI_US);
+		CSVUtil.write(StockUS.class).file(PATH_SBI_US, usSecurityList);
 	}
 	public static List<StockUS> load() {
-		return CSVUtil.loadWithHeader(PATH_SBI_US, StockUS.class);
+		return CSVUtil.read(StockUS.class).file(PATH_SBI_US);
 	}
 	
 //	<tr>^M
@@ -76,7 +76,7 @@ public class UpdateStockUS {
 		int countStock = 0;
 		int countETF = 0;
 		
-		String content = HttpUtil.downloadAsString(SOURCE_URL, SOURCE_ENCODING);
+		String content = HttpUtil.getInstance().withCharset(SOURCE_ENCODING).download(SOURCE_URL).result;
 		String[] lines = content.split("[\r\n]+");
 		
 		String category = "???";

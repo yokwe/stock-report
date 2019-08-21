@@ -2,9 +2,9 @@ package yokwe.stock.report.firstrade.tax;
 
 import org.slf4j.LoggerFactory;
 
-import yokwe.stock.UnexpectedException;
-import yokwe.stock.libreoffice.Sheet;
-import yokwe.stock.libreoffice.SpreadSheet;
+import yokwe.UnexpectedException;
+import yokwe.util.libreoffice.Sheet;
+import yokwe.util.libreoffice.SpreadSheet;
 
 @Sheet.SheetName("譲渡明細")
 @Sheet.HeaderRow(0)

@@ -1,8 +1,8 @@
 package yokwe.stock.report.firstrade.tax;
 
-import yokwe.stock.libreoffice.Sheet;
-import yokwe.stock.libreoffice.SpreadSheet;
-import yokwe.stock.util.DoubleUtil;
+import yokwe.util.libreoffice.Sheet;
+import yokwe.util.libreoffice.SpreadSheet;
+import yokwe.util.DoubleUtil;
 
 @Sheet.SheetName("譲渡明細2")
 @Sheet.HeaderRow(0)
