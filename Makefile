@@ -12,14 +12,15 @@ clean:
 #
 # misc-lib relate targets
 #
-setup-iex-cloud:
-	cd data; rm -rf market; ln -s ../../misc-lib/data/market/
 
-copy-iex-cloud.jar:
-	cp ../iex-cloud/tmp/build/jar/iex-cloud.jar data/jar/
+# to make project independent from misc-lib, copy files from misc-lib
+copy-misc-lib-files:
+	cp ../misc-lib/tmp/build/jar/misc-lib.jar data/jar/
+	cp ../misc-lib/data/jar/*.jar             data/jar/
+	cp ../misc-lib/data/market/*.csv          data/market/
 
-build-iex-cloud:
-	pushd ../iex-cloud/; ant build ; popd; make copy-iex-cloud.jar
+build-misc-lib:
+	pushd ../misc-lib/; ant build ; popd; make copy-misc-lib-files
 
 
 #
