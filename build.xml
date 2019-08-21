@@ -8,10 +8,15 @@
 
 	<property name="dir.libreoffice.jar" location="/usr/lib/libreoffice/program/classes" />
 	
+    <property name="dir.misc-lib.jar" location="../misc-lib/data/jar" />
+
 	<path id="ext.jar">
 		<fileset dir="${dir.ext.jar}">
 			<include name="*.jar" />
 		</fileset>
+                <fileset dir="${dir.misc-lib.jar}">
+                        <include name="*.jar" />
+                </fileset>
                 <fileset dir="${dir.libreoffice.jar}">
                         <include name="unoloader.jar" />
                         <include name="unoil.jar" />
