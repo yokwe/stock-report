@@ -178,8 +178,13 @@ public class Transaction implements Comparable<Transaction> {
 				if (activity.date != null && 0 < activity.date.length()) {
 					String date = activity.date;
 					if (Market.isClosed(date)) {
-						logger.error("Market is closed - date -  {}", activity);
-						throw new UnexpectedException("Market is closed");
+						if (date.equals("2018-12-05")) {
+							// Special for George H.W. Bush Day of Mourning
+							// Market is closed but stock can have settlement date 2018-12-05
+						} else {
+							logger.error("Market is closed - date -  {}", activity);
+							throw new UnexpectedException("Market is closed");
+						}
 					}
 				} else {
 					logger.error("Null date - {}", activity);
