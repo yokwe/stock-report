@@ -1,6 +1,6 @@
 package yokwe.stock.report.data;
 
-import yokwe.util.CSVUtil.ColumnName;
+import yokwe.util.libreoffice.Sheet.ColumnName;
 
 public class YahooPortfolio {
 	@ColumnName("Symbol")
