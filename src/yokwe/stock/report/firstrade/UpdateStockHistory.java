@@ -80,9 +80,9 @@ public class UpdateStockHistory {
 		logger.info("START");
 		
 		List<StockHistory>stockHistoryList = getStockHistoryList();
-		logger.info("stockHistoryList = {}", stockHistoryList.size());
 
 		CSVUtil.write(StockHistory.class).file(StockHistoryUtil.PATH_STOCK_HISTORY_FIRSTRADE, stockHistoryList);
+		logger.info("stockHistoryList {}  {}", StockHistoryUtil.PATH_STOCK_HISTORY_FIRSTRADE, stockHistoryList.size());
 		
 		logger.info("STOP");
 		System.exit(0);

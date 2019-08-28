@@ -40,7 +40,7 @@ public class UpdateYahooPortfolio {
 		}
 		
 		CSVUtil.write(YahooPortfolio.class).file(PATH_YAHOO_PORTFOLIO, yahooPortfolioList);
-		logger.info("yahooPortfolioList {}", yahooPortfolioList.size());
+		logger.info("yahooPortfolioList {}  {}", PATH_YAHOO_PORTFOLIO, yahooPortfolioList.size());
 		
 		logger.info("STOP");
 	}
