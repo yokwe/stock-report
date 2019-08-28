@@ -36,6 +36,7 @@ public class UpdateYahooPortfolio {
 			double quantity      = lastStockHistory.totalQuantity;
 			double purchasePrice = DoubleUtil.roundPrice(lastStockHistory.totalCost / lastStockHistory.totalQuantity);
 			
+			logger.info("{}", String.format("%-8s %8.3f  %6.2f", symbol, quantity, purchasePrice));
 			yahooPortfolioList.add(new YahooPortfolio(symbol, purchasePrice, quantity));
 		}
 		
