@@ -39,9 +39,8 @@ public class UpdateYahooPortfolio {
 			yahooPortfolioList.add(new YahooPortfolio(symbol, purchasePrice, quantity));
 		}
 		
-		CSVUtil.write(YahooPortfolio.class).file(StockHistoryUtil.PATH_STOCK_HISTORY_FIRSTRADE, yahooPortfolioList);
-
-		logger.info("yahooPortfolioList {}", yahooPortfolioList.size());
+		CSVUtil.write(YahooPortfolio.class).file(PATH_YAHOO_PORTFOLIO, yahooPortfolioList);
+		logger.info("yahooPortfolioList {}  {}", PATH_YAHOO_PORTFOLIO, yahooPortfolioList.size());
 		
 		logger.info("STOP");
 	}
