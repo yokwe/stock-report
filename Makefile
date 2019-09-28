@@ -22,6 +22,15 @@ copy-misc-lib-files:
 build-misc-lib:
 	pushd ../misc-lib/; ant build ; popd; make copy-misc-lib-files
 
+# to make project independent from stock-data, copy files from misc-lib
+copy-stock-data-files:
+	cp ../stock-data/tmp/build/jar/stock-data.jar data/jar/
+	cp ../misc-lib/data/jar/*.jar                 data/jar/
+	cp ../misc-lib/data/market/*.csv              data/market/
+
+build-stock-data:
+	pushd ../stock-data/; ant build ; popd; make copy-stock-data-files
+
 
 #
 # ods
