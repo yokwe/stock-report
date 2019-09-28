@@ -12,11 +12,13 @@ import java.util.stream.Collectors;
 import org.slf4j.LoggerFactory;
 
 import yokwe.UnexpectedException;
-import yokwe.util.libreoffice.Sheet;
-import yokwe.util.libreoffice.SpreadSheet;
+import yokwe.stock.data.Previous;
 import yokwe.stock.report.data.ForexUtil;
+import yokwe.stock.report.data.StockPrevious;
 import yokwe.stock.report.firstrade.Transaction;
 import yokwe.util.DoubleUtil;
+import yokwe.util.libreoffice.Sheet;
+import yokwe.util.libreoffice.SpreadSheet;
 
 public class Report {
 	private static final org.slf4j.Logger logger = LoggerFactory.getLogger(Report.class);
@@ -238,6 +240,28 @@ public class Report {
 		return ret;
 	}
 
+	static final String DUMMY_SELL_DATE = "2099-01-01";
+	
+	static Map<String, BuySell> addDummySellEntry(Map<String, BuySell> buySellMap) {
+		Map<String, BuySell> ret = new TreeMap<>();
+		
+		// Transaction sell(String date, String symbol, String name, double quantity, double price, double fee, double credit)		
+		for(Map.Entry<String, BuySell> entry: buySellMap.entrySet()) {
+			String  symbol  = entry.getKey().replace(".PR.", "-");
+			BuySell buySell = entry.getValue();
+			
+			BuySell buySellNew = BuySell.duplicate(buySell);
+			if (!buySell.isAlmostZero()) {
+				// Add dummySell data
+				Previous previous = StockPrevious.get(symbol);
+				Transaction transaction = Transaction.sell(DUMMY_SELL_DATE, buySell.symbol, buySell.name, buySell.totalQuantity, previous.close, 0, 0);
+				buySellNew.sell(transaction);
+			}
+			ret.put(symbol, buySellNew);
+		}
+		
+		return ret;
+	}
 
 	public static void generateReport(String url) {
 		logger.info("url        {}", url);		
@@ -257,6 +281,9 @@ public class Report {
 			// key is symbol
 			Map<String, BuySell> buySellMap = BuySell.getBuySellMap(transactionList);
 			
+			// Add dummy entry to buySellMap to know current state of stocks
+			buySellMap = addDummySellEntry(buySellMap);
+			
 			// key is date-symbol
 			Map<String, TransferSummary> summaryMap = getSummaryMap(buySellMap);
 			Map<String, List<TransferDetail2>> detailMap = getDetailMap(buySellMap);
@@ -267,6 +294,7 @@ public class Report {
 			// Build yearList from accountList
 			List<String> yearList = new ArrayList<>();
 			yearList.addAll(accountList.stream().map(e -> e.date.substring(0, 4)).collect(Collectors.toSet()));
+			yearList.add(DUMMY_SELL_DATE.substring(0, 4));
 			Collections.sort(yearList);
 			// Reverse yearList to position latest year sheet to left most.
 			Collections.reverse(yearList);
