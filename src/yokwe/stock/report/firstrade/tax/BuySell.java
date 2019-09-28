@@ -28,6 +28,23 @@ public class BuySell {
 	public List<Transfer>       current;
 	public List<List<Transfer>> past;
 	
+	public static BuySell duplicate(BuySell buySell) {
+		BuySell ret = new BuySell(buySell.symbol, buySell.name);
+		
+		ret.buyCount      = buySell.buyCount;
+		ret.dateBuyFirst  = buySell.dateBuyFirst;
+		ret.dateBuyLast   = buySell.dateBuyLast;
+		
+		ret.totalQuantity = buySell.totalQuantity;
+		ret.totalCost     = buySell.totalCost;
+		ret.totalCostJPY  = buySell.totalCostJPY;
+		
+		ret.current       = new ArrayList<>(buySell.current);
+		ret.past          = new ArrayList<>(buySell.past);
+		
+		return ret;
+	}
+	
 	public BuySell(String symbol, String name) {
 		this.symbol = symbol;
 		this.name   = name;
