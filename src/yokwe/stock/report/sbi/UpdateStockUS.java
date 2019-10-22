@@ -111,7 +111,14 @@ public class UpdateStockUS {
 							} else {
 								line1 = lines[++i];
 							}
-							String line2 = lines[++i];
+							String line2;
+							if (line1.contains("</th><td>")) {
+								int pos = line1.indexOf("<td>");
+								line2 = line1.substring(pos);
+								line1 = line1.substring(0, pos);
+							} else {
+								line2 = lines[++i];
+							}
 							String line3 = lines[++i];
 							if (line3.startsWith("<td>")) line3 = lines[++i];
 							String line4 = lines[++i];
