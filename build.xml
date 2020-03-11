@@ -156,4 +156,23 @@
                 </java>
         </target>
 	
+	<!-- gmo -->
+        <target name="run-gmo-update-stock-history">
+                <java classname="yokwe.stock.report.gmo.UpdateStockHistory" fork="true">
+                        <classpath location="${jar.stock-report}" />
+                        <classpath refid="ext.jar" />
+                        <sysproperty key="java.library.path" value="/usr/lib/libreoffice/program"/>
+                        <sysproperty key="logback.configurationFile" value="${dir.src}/logback.xml"/>
+                </java>
+        </target>
+
+        <target name="run-gmo-update-yahoo-portfolio">
+                <java classname="yokwe.stock.report.gmo.UpdateYahooPortfolio" fork="true">
+                        <classpath location="${jar.stock-report}" />
+                        <classpath refid="ext.jar" />
+                        <sysproperty key="java.library.path" value="/usr/lib/libreoffice/program"/>
+                        <sysproperty key="logback.configurationFile" value="${dir.src}/logback.xml"/>
+                </java>
+        </target>
+        
 </project>

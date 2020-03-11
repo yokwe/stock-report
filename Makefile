@@ -67,3 +67,11 @@ monex-yahoo-portfolio:
 	ant run-monex-update-stock-history
 	ant run-monex-update-yahoo-portfolio
 	cp tmp/monex/yahoo-portfolio-monex.csv ~/Dropbox/Trade
+
+#
+# gmo
+#
+gmo-yahoo-portfolio:
+	ant run-gmo-update-stock-history
+	ant run-gmo-update-yahoo-portfolio
+	cp tmp/gmo/yahoo-portfolio-gmo.csv ~/Dropbox/Trade
