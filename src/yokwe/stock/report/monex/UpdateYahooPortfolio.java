@@ -32,7 +32,7 @@ public class UpdateYahooPortfolio {
 			if (lastStockHistory.totalQuantity == 0) continue;
 			
 			// Change symbol style from iex to yahoo
-			String symbol        = entry.getKey().replaceAll("-", "-P");
+			String symbol        = entry.getKey().replace("-", "-P").replace(".", "-");
 			double quantity      = lastStockHistory.totalQuantity;
 			double purchasePrice = DoubleUtil.round(lastStockHistory.totalCost / lastStockHistory.totalQuantity, 2);
 			
