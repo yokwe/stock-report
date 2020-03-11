@@ -1,5 +1,6 @@
 package yokwe.stock.report.firstrade.tax;
 
+import yokwe.util.DoubleUtil;
 import yokwe.util.libreoffice.Sheet;
 import yokwe.util.libreoffice.SpreadSheet;
 
@@ -79,6 +80,12 @@ public class Account extends Sheet implements Comparable<Account> {
 	private Account(String date, double fundTotal, double cashTotal, double stockTotal, double gainTotal,
 			double wireIn, double wireOut, double achIn, double achOut, double interest, double dividend,
 			String symbol, double buy, double sell, double sellCost, double sellGain) {
+		
+		if (DoubleUtil.isAlmostZero(fundTotal))  fundTotal = 0;
+		if (DoubleUtil.isAlmostZero(cashTotal))  cashTotal = 0;
+		if (DoubleUtil.isAlmostZero(stockTotal)) stockTotal = 0;
+		if (DoubleUtil.isAlmostZero(gainTotal))  gainTotal = 0;
+			
 		this.date       = date;
 		this.fundTotal  = fundTotal;
 		this.cashTotal  = cashTotal;
