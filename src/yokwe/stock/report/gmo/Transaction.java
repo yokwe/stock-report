@@ -44,6 +44,7 @@ public class Transaction implements Comparable<Transaction> {
 		this.type     = type;
 		this.date     = date.replace("/", "-");
 		
+		// Use finance.yahoo.com style stockCode - 4 digits + ".T"
 		String stockCode = symbol.replace(".0", ".T");
 		
 		this.symbol   = stockCode;
@@ -135,6 +136,11 @@ public class Transaction implements Comparable<Transaction> {
 						logger.error("Unexpected  {}", activity);
 						throw new UnexpectedException("Unexpected");
 					}
+					break;
+				case Activity.TRADE_DIVIDEND_DEPOSIT:
+					// no information for quantity and price
+					// FIXME Are quantity and price used in dividend calculation or reporting?
+					transactionList.add(Transaction.dividend(activity.settlementDate, activity.stockCode, 0, 0, 0, activity.settlementPrice));
 					break;
 				default:
 					logger.error("Unexpected  {}", activity);
