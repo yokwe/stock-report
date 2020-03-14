@@ -30,7 +30,6 @@ public class UpdateYahooPortfolio {
 			StockHistory lastStockHistory = stockHistoryList.get(stockHistoryList.size() - 1);
 			if (lastStockHistory.totalQuantity == 0) continue;
 			
-			// Change symbol style from iex to yahoo
 			String symbol        = entry.getKey();
 			double quantity      = lastStockHistory.totalQuantity;
 			double purchasePrice = Math.ceil(lastStockHistory.totalCost / lastStockHistory.totalQuantity);
