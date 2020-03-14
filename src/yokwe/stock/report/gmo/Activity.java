@@ -15,6 +15,7 @@ public class Activity extends Sheet {
 	public static final String TRADE_CASH_TRANSACTION           = "現物";
 	public static final String TRADE_DEPOSIT                    = "入金";
 	public static final String TRADE_WITHDRAW                   = "出金";
+	public static final String TRADE_DIVIDEND_DEPOSIT           = "配当金（入金）";
 	
 	public static final String TRANSACTION_BUY  = "買";
 	public static final String TRANSACTION_SELL = "売";
@@ -163,7 +164,7 @@ public class Activity extends Sheet {
 	public static final String ACCOUNT_DESIGNATED = "特定";
 	
 	@ColumnName("約定日時")              public String tradeDateTime;                  // YYYY/MM/DD HH:MM:SS
-	@ColumnName("取引区分")              public String tradeType;                      // コネクト自動入金 コネクト自動出金 現物 入金 出金
+	@ColumnName("取引区分")              public String tradeType;                      // コネクト自動入金 コネクト自動出金 現物 入金 出金 配当金（入金）
 	@ColumnName("受渡日")                public String settlementDate;                 // YYYY/MM/DD
 	@ColumnName("約定番号")              public String tradeNumber;
 	@ColumnName("銘柄名")                public String stockName;
