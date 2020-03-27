@@ -18,7 +18,7 @@
 	<classpathentry kind="lib" path="/usr/lib/libreoffice/program/classes/jurt.jar"/>
 	<classpathentry kind="lib" path="/usr/lib/libreoffice/program/classes/ridl.jar"/>
 	<classpathentry kind="lib" path="data/jar/misc-lib.jar" sourcepath="/misc-lib/src"/>
-	<classpathentry kind="lib" path="data/jar/stock-data.jar" sourcepath="/stock-data/src/yokwe"/>
+	<classpathentry kind="lib" path="data/jar/stock-data.jar" sourcepath="/stock-data/src"/>
 	<classpathentry kind="lib" path="data/jar/iex-cloud.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
