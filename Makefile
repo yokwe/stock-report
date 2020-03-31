@@ -41,7 +41,9 @@ save-ods:
 	cp ~/Dropbox/Trade/投資活動_gmo.ods       ~/Dropbox/Trade/SAVE/投資活動_gmo_$$(date +%Y%m%d).ods
 	cp ~/Dropbox/Trade/投資活動_TEST.ods      ~/Dropbox/Trade/SAVE/投資活動_TEST_$$(date +%Y%m%d).ods
 	cp ~/Dropbox/Trade/投資活動_ソニー銀行.ods  ~/Dropbox/Trade/SAVE/投資活動_ソニー銀行_$$(date +%Y%m%d).ods
-
+	cp ~/Dropbox/Trade/TEMPLATE_STOCK_REPORT.ods   ~/Dropbox/Trade/SAVE/TEMPLATE_STOCK_REPORT_$$(date +%Y%m%d).ods
+	cp ~/Dropbox/Trade/TEMPLATE_FIRSTRADE_TAX.ods  ~/Dropbox/Trade/SAVE/TEMPLATE_FIRSTRADE_TAX_$$(date +%Y%m%d).ods
+	
 #
 # firstrade
 #
