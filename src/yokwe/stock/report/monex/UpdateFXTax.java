@@ -11,14 +11,15 @@ import java.util.regex.Pattern;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import yokwe.util.HttpUtil;
 import yokwe.util.CSVUtil;
+import yokwe.util.FileUtil;
 
 public class UpdateFXTax {
 	private static final Logger logger = LoggerFactory.getLogger(UpdateFXTax.class);
 
 	public static final String SOURCE_URL       = "https://mst.monex.co.jp/mst/servlet/ITS/ucu/UsEvaluationRateGST";
 	public static final String SOURCE_ENCODING  = "SHIFT_JIS";
+	public static final String SOURCE_FILE_PATH = "tmp/monex/UsEvaluationRateGST"; // FIXME Temporary fix for absent of HTTP/2 download
 	
 	public static final int THIS_YEAR = LocalDate.now().getYear();
 	public static final String PATH_MONEX_FX_TAX_THIS_YEAR = String.format("tmp/monex/monex-fx-tax-%d.csv", THIS_YEAR);
@@ -45,7 +46,9 @@ public class UpdateFXTax {
 	private static void updateThisYear() {
 		logger.info("updateThisYear {}", THIS_YEAR);
 		String path     = getPath(THIS_YEAR);
-		String contents = HttpUtil.getInstance().withCharset(SOURCE_ENCODING).download(SOURCE_URL).result;
+		
+//		String contents = HttpUtil.getInstance().withCharset(SOURCE_ENCODING).download(SOURCE_URL).result; // FIXME Temporary fix for absent of HTTP/2 download
+		String contents = FileUtil.read().withCharset(SOURCE_ENCODING).file(SOURCE_FILE_PATH); // FIXME Temporary fix for absent of HTTP/2 download
 
 		Matcher matcher = PATTERN.matcher(contents);
 		
