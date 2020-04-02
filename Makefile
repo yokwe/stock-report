@@ -62,7 +62,6 @@ update-forex:
 # monex
 #
 monex-fx-tax:
-	curl -A $(USERAGENT) https://mst.monex.co.jp/mst/servlet/ITS/ucu/UsEvaluationRateGST >tmp/monex/UsEvaluationRateGST
 	ant run-monex-update-fx-tax
 	cp tmp/monex/monex-fx-tax.csv ~/Dropbox/Trade/
 
