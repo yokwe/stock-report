@@ -12,8 +12,8 @@ import java.util.List;
 import org.slf4j.LoggerFactory;
 
 import yokwe.UnexpectedException;
-import yokwe.util.HttpUtil;
 import yokwe.util.CSVUtil;
+import yokwe.util.http.HttpUtil;
 
 public class UpdateForex {
 	private static final org.slf4j.Logger logger = LoggerFactory.getLogger(UpdateForex.class);
