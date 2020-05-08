@@ -6,13 +6,13 @@
 	<property name="dir.build.bin" location="${dir.build}/bin" />
 	<property name="dir.build.jar" location="${dir.build}/jar" />
 
-	<property name="dir.libreoffice.jar" location="/usr/lib/libreoffice/program/classes" />
+        <property name="dir.libreoffice" location="/usr/lib/libreoffice/program" />
 
 	<path id="ext.jar">
 		<fileset dir="${dir.ext.jar}">
 			<include name="*.jar" />
 		</fileset>
-                <fileset dir="${dir.libreoffice.jar}">
+                <fileset dir="${dir.libreoffice}/classes">
                         <include name="unoloader.jar" />
                         <include name="unoil.jar" />
                         <include name="juh.jar" />
@@ -48,7 +48,7 @@
                 <java classname="yokwe.stock.report.data.UpdateForex" fork="true">
                         <classpath location="${jar.stock-report}" />
                         <classpath refid="ext.jar" />
-                        <sysproperty key="java.library.path" value="/usr/lib/libreoffice/program"/>
+                        <classpath location="${dir.libreoffice}"/>
                         <sysproperty key="logback.configurationFile" value="${dir.src}/logback.xml"/>
                  </java>
         </target>
@@ -57,7 +57,7 @@
                 <java classname="yokwe.stock.report.Report" fork="true">
                         <classpath location="${jar.stock-report}" />
                         <classpath refid="ext.jar" />
-                        <sysproperty key="java.library.path" value="/usr/lib/libreoffice/program"/>
+                        <classpath location="${dir.libreoffice}"/>
                         <sysproperty key="logback.configurationFile" value="${dir.src}/logback.xml"/>
                </java>
         </target>
@@ -67,7 +67,7 @@
                 <java classname="yokwe.stock.report.monex.UpdateFXTax" fork="true">
                         <classpath location="${jar.stock-report}" />
                         <classpath refid="ext.jar" />
-                        <sysproperty key="java.library.path" value="/usr/lib/libreoffice/program"/>
+                        <classpath location="${dir.libreoffice}"/>
                         <sysproperty key="logback.configurationFile" value="${dir.src}/logback.xml"/>
                </java>
         </target>
@@ -76,7 +76,7 @@
                 <java classname="yokwe.stock.report.monex.UpdateStockHistory" fork="true">
                         <classpath location="${jar.stock-report}" />
                         <classpath refid="ext.jar" />
-                        <sysproperty key="java.library.path" value="/usr/lib/libreoffice/program"/>
+                        <classpath location="${dir.libreoffice}"/>
                         <sysproperty key="logback.configurationFile" value="${dir.src}/logback.xml"/>
                 </java>
         </target>
@@ -85,7 +85,7 @@
                 <java classname="yokwe.stock.report.monex.UpdateStockUS" fork="true">
                         <classpath location="${jar.stock-report}" />
                         <classpath refid="ext.jar" />
-                        <sysproperty key="java.library.path" value="/usr/lib/libreoffice/program"/>
+                        <classpath location="${dir.libreoffice}"/>
                         <sysproperty key="logback.configurationFile" value="${dir.src}/logback.xml"/>
                 </java>
         </target>
@@ -94,7 +94,7 @@
                 <java classname="yokwe.stock.report.monex.UpdateYahooPortfolio" fork="true">
                         <classpath location="${jar.stock-report}" />
                         <classpath refid="ext.jar" />
-                        <sysproperty key="java.library.path" value="/usr/lib/libreoffice/program"/>
+                        <classpath location="${dir.libreoffice}"/>
                         <sysproperty key="logback.configurationFile" value="${dir.src}/logback.xml"/>
                 </java>
         </target>
@@ -104,7 +104,7 @@
                 <java classname="yokwe.stock.report.firstrade.UpdateStockHistory" fork="true">
                         <classpath location="${jar.stock-report}" />
                         <classpath refid="ext.jar" />
-                        <sysproperty key="java.library.path" value="/usr/lib/libreoffice/program"/>
+                        <classpath location="${dir.libreoffice}"/>
                         <sysproperty key="logback.configurationFile" value="${dir.src}/logback.xml"/>
                 </java>
         </target>
@@ -113,7 +113,7 @@
                 <java classname="yokwe.stock.report.firstrade.UpdateYahooPortfolio" fork="true">
                         <classpath location="${jar.stock-report}" />
                         <classpath refid="ext.jar" />
-                        <sysproperty key="java.library.path" value="/usr/lib/libreoffice/program"/>
+                        <classpath location="${dir.libreoffice}"/>
                         <sysproperty key="logback.configurationFile" value="${dir.src}/logback.xml"/>
                 </java>
         </target>
@@ -122,7 +122,7 @@
                 <java classname="yokwe.stock.report.firstrade.tax.Report" fork="true">
                         <classpath location="${jar.stock-report}" />
                         <classpath refid="ext.jar" />
-                        <sysproperty key="java.library.path" value="/usr/lib/libreoffice/program"/>
+                        <classpath location="${dir.libreoffice}"/>
                         <sysproperty key="logback.configurationFile" value="${dir.src}/logback.xml"/>
                 </java>
         </target>
@@ -131,7 +131,7 @@
                 <java classname="yokwe.stock.report.firstrade.statement.Report" fork="true">
                         <classpath location="${jar.stock-report}" />
                         <classpath refid="ext.jar" />
-                        <sysproperty key="java.library.path" value="/usr/lib/libreoffice/program"/>
+                	<classpath location="${dir.libreoffice}"/>
                         <sysproperty key="logback.configurationFile" value="${dir.src}/logback.xml"/>
                 </java>
         </target>
@@ -141,7 +141,7 @@
                 <java classname="yokwe.stock.report.sbi.UpdateStockUS" fork="true">
                         <classpath location="${jar.stock-report}" />
                         <classpath refid="ext.jar" />
-                        <sysproperty key="java.library.path" value="/usr/lib/libreoffice/program"/>
+                        <classpath location="${dir.libreoffice}"/>
                         <sysproperty key="logback.configurationFile" value="${dir.src}/logback.xml"/>
                 </java>
         </target>
@@ -151,7 +151,7 @@
                 <java classname="yokwe.stock.report.rakuten.UpdateStockUS" fork="true">
                         <classpath location="${jar.stock-report}" />
                         <classpath refid="ext.jar" />
-                        <sysproperty key="java.library.path" value="/usr/lib/libreoffice/program"/>
+                        <classpath location="${dir.libreoffice}"/>
                         <sysproperty key="logback.configurationFile" value="${dir.src}/logback.xml"/>
                 </java>
         </target>
@@ -161,7 +161,7 @@
                 <java classname="yokwe.stock.report.gmo.UpdateStockHistory" fork="true">
                         <classpath location="${jar.stock-report}" />
                         <classpath refid="ext.jar" />
-                        <sysproperty key="java.library.path" value="/usr/lib/libreoffice/program"/>
+                        <classpath location="${dir.libreoffice}"/>
                         <sysproperty key="logback.configurationFile" value="${dir.src}/logback.xml"/>
                 </java>
         </target>
@@ -170,7 +170,7 @@
                 <java classname="yokwe.stock.report.gmo.UpdateYahooPortfolio" fork="true">
                         <classpath location="${jar.stock-report}" />
                         <classpath refid="ext.jar" />
-                        <sysproperty key="java.library.path" value="/usr/lib/libreoffice/program"/>
+                        <classpath location="${dir.libreoffice}"/>
                         <sysproperty key="logback.configurationFile" value="${dir.src}/logback.xml"/>
                 </java>
         </target>
