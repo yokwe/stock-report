@@ -142,6 +142,9 @@ public class Transaction implements Comparable<Transaction> {
 					// FIXME Are quantity and price used in dividend calculation or reporting?
 					transactionList.add(Transaction.dividend(activity.settlementDate, activity.stockCode, 0, 0, 0, activity.settlementPrice));
 					break;
+				case Activity.TRADE_TRANSFER_TAX_COLLECTION:
+					transactionList.add(Transaction.fee(activity.settlementDate, activity.settlementPrice));
+					break;
 				default:
 					logger.error("Unexpected  {}", activity);
 					throw new UnexpectedException("Unexpected");

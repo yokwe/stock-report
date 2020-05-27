@@ -16,6 +16,7 @@ public class Activity extends Sheet {
 	public static final String TRADE_DEPOSIT                    = "入金";
 	public static final String TRADE_WITHDRAW                   = "出金";
 	public static final String TRADE_DIVIDEND_DEPOSIT           = "配当金（入金）";
+	public static final String TRADE_TRANSFER_TAX_COLLECTION    = "譲渡益税徴収金";
 	
 	public static final String TRANSACTION_BUY  = "買";
 	public static final String TRANSACTION_SELL = "売";
