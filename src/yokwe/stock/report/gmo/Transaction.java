@@ -145,6 +145,9 @@ public class Transaction implements Comparable<Transaction> {
 				case Activity.TRADE_TRANSFER_TAX_COLLECTION:
 					transactionList.add(Transaction.fee(activity.settlementDate, activity.settlementPrice));
 					break;
+				case Activity.TRADE_TRANSFER_TAX_REFUND:
+					transactionList.add(Transaction.fee(activity.settlementDate, activity.settlementPrice));
+					break;
 				default:
 					logger.error("Unexpected  {}", activity);
 					throw new UnexpectedException("Unexpected");
