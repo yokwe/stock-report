@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="lib" path="data/jar/commons-logging-1.2.jar"/>
 	<classpathentry kind="lib" path="data/jar/logback-classic-1.1.3-sources.jar"/>
 	<classpathentry kind="lib" path="data/jar/logback-classic-1.1.3.jar"/>
@@ -20,5 +24,7 @@
 	<classpathentry kind="lib" path="data/jar/misc-lib.jar" sourcepath="/misc-lib/src"/>
 	<classpathentry kind="lib" path="data/jar/stock-data.jar" sourcepath="/stock-data/src"/>
 	<classpathentry kind="lib" path="data/jar/iex-cloud.jar"/>
+	<classpathentry kind="lib" path="data/jar/httpcore5-5.0.jar"/>
+	<classpathentry kind="lib" path="data/jar/httpcore5-h2-5.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
