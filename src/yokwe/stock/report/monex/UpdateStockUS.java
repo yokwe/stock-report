@@ -23,7 +23,7 @@ public class UpdateStockUS {
 	private static final Logger logger = LoggerFactory.getLogger(UpdateStockUS.class);
 
 	public static final String SOURCE_URL       = "https://mxp1.monex.co.jp/mst/servlet/ITS/ucu/UsMeigaraJsonGST";
-	public static final String SOURCE_ENCODING  = "SHIFT_JIS";
+	public static final String SOURCE_ENCODING  = "Windows-31J";
 	
 	public static final String PATH_MONEX_US = "tmp/monex/monex-stock-us.csv";
 
@@ -41,7 +41,14 @@ public class UpdateStockUS {
 	public static void main(String[] args) {
 		logger.info("START");
 		
-		String contents = HttpUtil.getInstance().withCharset(SOURCE_ENCODING).download(SOURCE_URL).result;
+		HttpUtil.Result result = HttpUtil.getInstance().withCharset(SOURCE_ENCODING).withRawData(true).download(SOURCE_URL);
+		logger.info("result {} {} {}", result.url, result.code, result.rawData);
+		
+		String contents = result.result;
+		logger.info("contents {}", contents);
+
+		
+		
 		String content2 = contents.replaceAll(",\\s+]", "]"); // Remove comma of last array element
 		Matcher matcher = PATTERN.matcher(content2);
 		if (!matcher.find()) {
