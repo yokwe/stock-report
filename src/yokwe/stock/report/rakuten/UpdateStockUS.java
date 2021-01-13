@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 import yokwe.UnexpectedException;
 import yokwe.util.CSVUtil;
 import yokwe.util.CSVUtil.ColumnName;
+import yokwe.util.StringUtil;
 import yokwe.util.http.HttpUtil;
 
 
@@ -147,8 +148,11 @@ public class UpdateStockUS {
 			case "NYSE ARCA":
 				data.exchangeJP = "NYSE Arca";
 				break;
+			case "":
+				data.exchangeJP = "*BLANK*";
+				break;
 			default:
-				logger.error("Unexpected  !{}!{}!", data.tickerInternal, data.exchangeJP);
+				logger.error("Unpexpected data {}!", StringUtil.toString(data));
 				throw new UnexpectedException("Unexpected");
 			}
 			
