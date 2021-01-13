@@ -41,11 +41,11 @@ public class UpdateStockUS {
 	public static void main(String[] args) {
 		logger.info("START");
 		
-		HttpUtil.Result result = HttpUtil.getInstance().withCharset(SOURCE_ENCODING).withRawData(true).download(SOURCE_URL);
-		logger.info("result {} {} {}", result.url, result.code, result.rawData);
+		HttpUtil.Result result = HttpUtil.getInstance().withCharset(SOURCE_ENCODING).download(SOURCE_URL);
+		logger.info("result {} {} {}", result.url, result.code, result.result.length());
 		
 		String contents = result.result;
-		logger.info("contents {}", contents);
+//		logger.info("contents {}", contents);
 
 		
 		
