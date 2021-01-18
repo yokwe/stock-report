@@ -65,10 +65,6 @@ monex-fx-tax:
 	ant run-monex-update-fx-tax
 	cp tmp/monex/monex-fx-tax.csv ~/Dropbox/Trade/
 
-monex-stock-us:
-	ant run-monex-update-stock-us
-	cp tmp/monex/monex-stock-us.csv ~/Dropbox/Trade/
-
 monex-yahoo-portfolio:
 	ant run-monex-update-stock-history
 	ant run-monex-update-yahoo-portfolio
@@ -81,3 +77,14 @@ gmo-yahoo-portfolio:
 	ant run-gmo-update-stock-history
 	ant run-gmo-update-yahoo-portfolio
 	cp tmp/gmo/yahoo-portfolio-gmo.csv ~/Dropbox/Trade
+
+
+#
+# stock-us
+#
+update-stock-us:
+	ant run-monex-update-stock-us
+	ant run-sbi-update-stock-us
+	ant run-rakuten-update-stock-us
+	ant run-dmm-update-stock-us
+	wc -l tmp/*/*stock-us.csv
