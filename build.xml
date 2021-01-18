@@ -155,6 +155,16 @@
                         <sysproperty key="logback.configurationFile" value="${dir.src}/logback.xml"/>
                 </java>
         </target>
+        
+        <!-- dmm -->
+        <target name="run-dmm-update-stock-us">
+                <java classname="yokwe.stock.report.dmm.UpdateStockUS" fork="true">
+                        <classpath location="${jar.stock-report}" />
+                        <classpath refid="ext.jar" />
+                        <classpath location="${dir.libreoffice}"/>
+                        <sysproperty key="logback.configurationFile" value="${dir.src}/logback.xml"/>
+                </java>
+        </target>
 	
 	<!-- gmo -->
         <target name="run-gmo-update-stock-history">
