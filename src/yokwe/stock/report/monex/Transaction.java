@@ -8,11 +8,10 @@ import java.util.List;
 import org.slf4j.LoggerFactory;
 
 import yokwe.UnexpectedException;
+import yokwe.util.DoubleUtil;
+import yokwe.util.JapanHoliday;
 import yokwe.util.libreoffice.Sheet;
 import yokwe.util.libreoffice.SpreadSheet;
-import yokwe.util.JapanHoliday;
-import yokwe.util.Market;
-import yokwe.util.DoubleUtil;
 
 public class Transaction implements Comparable<Transaction> {
 	private static final org.slf4j.Logger logger = LoggerFactory.getLogger(Transaction.class);
@@ -233,9 +232,12 @@ public class Transaction implements Comparable<Transaction> {
 					logger.error("Unexpected  {}", activity);
 					throw new UnexpectedException("Unexpected");
 				}
-				if (Market.isClosed(activity.payDateUS)) {
-					logger.error("Unexpected  {}", activity);
-					throw new UnexpectedException("Unexpected");
+				// acitvity.payDateUS is used to look up usdjpy conversion rate (monex-fx-tax)
+				// activity.payDateUS can be japan holiday  -  2021-04-29 for HSBC
+				// activity.payDateUS can be us holiday     -  2021-04-02 for SLRC and SUNS
+				if (JapanHoliday.isClosed(activity.payDateUS)) {
+//					logger.error("Unexpected  {}", activity);
+//					throw new UnexpectedException("Unexpected");
 				}
 				if (activity.payDateJP == null || activity.payDateJP.isEmpty()) {
 					logger.error("Unexpected  {}", activity);
