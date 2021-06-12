@@ -16,15 +16,11 @@
 	<classpathentry kind="lib" path="data/jar/httpclient-4.5.5.jar"/>
 	<classpathentry kind="lib" path="data/jar/httpcore-4.4.9.jar"/>
 	<classpathentry kind="lib" path="data/jar/javax.json-1.1.jar"/>
-	<classpathentry kind="lib" path="/usr/lib/libreoffice/program/classes/unoloader.jar"/>
-	<classpathentry kind="lib" path="/usr/lib/libreoffice/program/classes/unoil.jar"/>
-	<classpathentry kind="lib" path="/usr/lib/libreoffice/program/classes/juh.jar"/>
-	<classpathentry kind="lib" path="/usr/lib/libreoffice/program/classes/jurt.jar"/>
-	<classpathentry kind="lib" path="/usr/lib/libreoffice/program/classes/ridl.jar"/>
 	<classpathentry kind="lib" path="data/jar/misc-lib.jar" sourcepath="/misc-lib/src"/>
 	<classpathentry kind="lib" path="data/jar/stock-data.jar" sourcepath="/stock-data/src"/>
 	<classpathentry kind="lib" path="data/jar/iex-cloud.jar"/>
 	<classpathentry kind="lib" path="data/jar/httpcore5-5.0.jar"/>
 	<classpathentry kind="lib" path="data/jar/httpcore5-h2-5.0.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/LIBRE_OFFICE"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
